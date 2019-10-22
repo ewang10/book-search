@@ -21,42 +21,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const params = {
-      q: this.state.searchTerm,
-      filter: this.state.bookType,
-      printType: this.state.printType,
-      key: 'AIzaSyAgDe5oiKv5jrPwwbzw5ocC6OPHHldpDDc'
-    };
-    const searchURL = 'https://www.googleapis.com/books/v1/volumes?';
-    const queryString = this.formateQueryParameter(params);
-    const url = searchURL + queryString;
-
-    fetch(url)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Something went wrong, please try again later.');
-        }
-        return res.json();
-      })
-      .then(data => {
-        //console.log(data.items);
-        this.setState({
-          books: data.items,
-          error: null
-        });
-      })
-      .catch(err => {
-        this.setState({
-          error: err.message
-        });
-      });
+    this.updateBooks();
   }
 
   updateBooks() {
     const params = {
       q: this.state.searchTerm,
-      filter: 'ebooks',
-      printType: 'all',
+      filter: this.state.bookType,
+      printType: this.state.printType,
       key: 'AIzaSyAgDe5oiKv5jrPwwbzw5ocC6OPHHldpDDc'
     };
     const searchURL = 'https://www.googleapis.com/books/v1/volumes?';
@@ -88,9 +60,9 @@ class App extends Component {
     //console.log("term: " + term);
     this.setState({
       searchTerm: term
-    });
+    }, () => this.updateBooks());
     //console.log("new term: " + this.state.searchTerm);
-    this.updateBooks();
+    //this.updateBooks();
   }
 
   updateBookType(type) {

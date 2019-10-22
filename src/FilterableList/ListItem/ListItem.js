@@ -8,7 +8,7 @@ class ListItem extends Component {
         const subtitle = this.props.volumeInfo.subtitle ? ": " + this.props.volumeInfo.subtitle : '';
         const bookTitle = title + subtitle;
         const bookDescription = this.props.volumeInfo.description;
-        const bookImage = this.props.volumeInfo.imageLinks.smallThumbnail;
+        const bookImage = this.props.volumeInfo.imageLinks.thumbnail;
         const bookPrice = this.props.saleInfo.retailPrice ?
             <p>Price: ${this.props.saleInfo.retailPrice.amount}</p>
             : <p>FREE</p>;

@@ -1,7 +1,29 @@
+.ListItem {
+    border-bottom: solid 1px grey;
+}
+
+
 .ListItem > h2 {
     text-align: center;
 }
 
 .content {
     display: flex;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    padding: 10px;
+}
+
+.image-container > img {
+    height: 275px;
+    width: 150px;
+}
+
+.book-details {
+    width: 100%;
+    text-align: center;
 }
