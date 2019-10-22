@@ -52,11 +52,45 @@ class App extends Component {
       });
   }
 
+  updateBooks() {
+    const params = {
+      q: this.state.searchTerm,
+      filter: 'ebooks',
+      printType: 'all',
+      key: 'AIzaSyAgDe5oiKv5jrPwwbzw5ocC6OPHHldpDDc'
+    };
+    const searchURL = 'https://www.googleapis.com/books/v1/volumes?';
+    const queryString = this.formateQueryParameter(params);
+    const url = searchURL + queryString;
+    console.log("update books url" + url);
+    fetch(url)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Something went wrong, please try again later.');
+        }
+        return res.json();
+      })
+      .then(data => {
+        //console.log(data.items);
+        this.setState({
+          books: data.items,
+          error: null
+        });
+      })
+      .catch(err => {
+        this.setState({
+          error: err.message
+        });
+      });
+  }
+
   updateSearchTerm(term) {
-    console.log("term: " + term);
+    //console.log("term: " + term);
     this.setState({
       searchTerm: term
     });
+    //console.log("new term: " + this.state.searchTerm);
+    this.updateBooks();
   }
 
   updateBookType(type) {
@@ -64,6 +98,7 @@ class App extends Component {
     this.setState({
       bookType: type
     });
+    //console.log("new type: " + this.state.bookType);
   }
 
   updatePrintType(type) {
@@ -76,6 +111,8 @@ class App extends Component {
     const error = this.state.error
       ? <div className="error">{this.state.error}</div>
       : "";
+      //console.log("new term: " + this.state.searchTerm);
+      //console.log("new books: " + JSON.stringify(this.state.books));
     
       return (
         <div className="App">
