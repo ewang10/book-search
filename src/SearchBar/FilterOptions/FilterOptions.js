@@ -11,10 +11,11 @@ class FilterOptions extends Component {
                         id="printType"
                         name="printType"
                         onChange={e => this.props.handlePrintType(e.target.value)}
-                    />
+                    >
                     <option value="all">All</option>
-                    <option value="books">Books</option>
+                    <option value="book">Books</option>
                     <option value="magazines">Magazines</option>
+                    </select>
                 </form>
                 <form className="BookType">
                     <label>Book Type:</label>
@@ -22,9 +23,11 @@ class FilterOptions extends Component {
                         id="bookType"
                         name="bookType"
                         onChange={e => this.props.handleBookType(e.target.value)}
-                    />
+                    >
+                    <option value="ebooks">no filter</option>
                     <option value="free-ebooks">Free</option>
                     <option value="paid-ebooks">Paid</option>
+                    </select>
                 </form>
             </div>
         );

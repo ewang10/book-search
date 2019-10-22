@@ -4,20 +4,22 @@ class SearchBox extends Component {
 
     onSubmitForm(e) {
         e.preventDefault();
-        this.props.handleSearch(e.target.search.value);
+        //console.log(e.target.searchTerm.value);
+        //console.log(this.props);
+        this.props.handleSearch(e.target.searchTerm.value);
     }
 
     render() {
         return (
             <div className="SearchBox">
-                <form onSubmit={this.onSubmitForm}>
+                <form onSubmit={() => this.onSubmitForm}>
                     <label htmlFor="search">Search:</label>
                     <input
-                        id="search"
-                        name="search"
+                        id="searchTerm"
+                        name="searchTerm"
                         type="text"
                     />
-                    <button type="button">Search</button>
+                    <button type="submit">Search</button>
                 </form>
             </div>
         );

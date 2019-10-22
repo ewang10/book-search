@@ -10,7 +10,9 @@ class SearchBar extends Component {
                     <h1>Google Book Search</h1>
                 </div>
                 <div className="SearchBar-controls">
-                    <SearchBox handleSearch={this.props.handleSearch}/>
+                    <SearchBox 
+                        handleSearch={this.props.handleSearch}
+                    />
                     <FilterOptions 
                         handleBookType={this.props.handleBookType}
                         handlePrintType={this.props.handlePrintType}

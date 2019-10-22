@@ -8,8 +8,12 @@ class ListItem extends Component {
         const bookTitle = title + subtitle;
         const bookDescription = this.props.volumeInfo.description;
         const bookImage = this.props.volumeInfo.imageLinks.smallThumbnail;
-        const bookPrice = this.props.saleInfo.retailPrice.amount;  
-        const bookAuthors = this.props.volumeInfo.authors.join(" ");
+        const bookPrice = this.props.saleInfo.retailPrice ?
+            <p>Price: ${this.props.saleInfo.retailPrice.amount}</p>
+            : <p>FREE</p> ;  
+        const bookAuthors = this.props.volumeInfo.authors ?
+            this.props.volumeInfo.authors.join(" ") : '';
+        //console.log(this.props.saleInfo);
         //console.log(this.props);
         return (
             <div className="ListItem">
@@ -20,7 +24,7 @@ class ListItem extends Component {
                 </div>
                 <div className="book-details">
                     <p>Author: {bookAuthors}</p>
-                    <p>Price: ${bookPrice}</p>
+                    {bookPrice}
                     <p>{bookDescription}</p>
                 </div>
             </div>

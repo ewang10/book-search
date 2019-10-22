@@ -53,12 +53,14 @@ class App extends Component {
   }
 
   updateSearchTerm(term) {
+    console.log("term: " + term);
     this.setState({
       searchTerm: term
     });
   }
 
   updateBookType(type) {
+    //console.log("book type: " + type);
     this.setState({
       bookType: type
     });
