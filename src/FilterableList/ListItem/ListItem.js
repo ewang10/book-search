@@ -9,8 +9,8 @@ class ListItem extends Component {
         const bookDescription = this.props.volumeInfo.description;
         const bookImage = this.props.volumeInfo.imageLinks.smallThumbnail;
         const bookPrice = this.props.saleInfo.retailPrice.amount;  
-
         const bookAuthors = this.props.volumeInfo.authors.join(" ");
+        //console.log(this.props);
         return (
             <div className="ListItem">
                 <h2>{bookTitle}</h2>
