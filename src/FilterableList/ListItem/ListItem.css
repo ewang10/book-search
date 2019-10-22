@@ -1,0 +1,7 @@
+.ListItem > h2 {
+    text-align: center;
+}
+
+.content {
+    display: flex;
+}

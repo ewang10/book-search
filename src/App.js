@@ -81,7 +81,7 @@ class App extends Component {
         <div className="App">
           {error}
           
-          <SearchBar 
+          <SearchBar
             handleSearch={term => this.updateSearchTerm(term)}
             handleBookType={type => this.updateBookType(type)}
             handlePrintType={type => this.updatePrintType(type)}

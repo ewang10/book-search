@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ListItem from './ListItem/ListItem';
+import './FilterableList.css';
 
 class FilterableList extends Component {
 
@@ -14,6 +15,8 @@ class FilterableList extends Component {
                 ((bookType === 'free-ebooks') && (book.saleInfo.saleability === "FREE"))
                 || ((bookType === 'paid-ebooks') && (book.saleInfo.saleability !== "FREE"))))
             .map((book, i) => <ListItem key={i} {...book}/>);
+        //console.log(books.length + " books")
+        //console.log(this.props.books[0].volumeInfo.title.includes(searchTerm));
         return (
             <div className="FilterableList">
                 {books}

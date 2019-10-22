@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import './ListItem.css';
 
 class ListItem extends Component {
     render() {
-        
+
         const title = this.props.volumeInfo.title;
         const subtitle = this.props.volumeInfo.subtitle ? ": " + this.props.volumeInfo.subtitle : '';
         const bookTitle = title + subtitle;
@@ -10,7 +11,7 @@ class ListItem extends Component {
         const bookImage = this.props.volumeInfo.imageLinks.smallThumbnail;
         const bookPrice = this.props.saleInfo.retailPrice ?
             <p>Price: ${this.props.saleInfo.retailPrice.amount}</p>
-            : <p>FREE</p> ;  
+            : <p>FREE</p>;
         const bookAuthors = this.props.volumeInfo.authors ?
             this.props.volumeInfo.authors.join(" ") : '';
         //console.log(this.props.saleInfo);
@@ -18,14 +19,15 @@ class ListItem extends Component {
         return (
             <div className="ListItem">
                 <h2>{bookTitle}</h2>
-                
-                <div className="image-container">
-                    <img src={bookImage} alt="picture of book"/>
-                </div>
-                <div className="book-details">
-                    <p>Author: {bookAuthors}</p>
-                    {bookPrice}
-                    <p>{bookDescription}</p>
+                <div className="content">
+                    <div className="image-container">
+                        <img src={bookImage} alt="picture of book" />
+                    </div>
+                    <div className="book-details">
+                        <p>Author: {bookAuthors}</p>
+                        {bookPrice}
+                        <p>{bookDescription}</p>
+                    </div>
                 </div>
             </div>
         );
